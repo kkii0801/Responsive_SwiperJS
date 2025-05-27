@@ -46,10 +46,16 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-
+```
+React의 useEffect와 useState 훅을 가져옵니다. <br />
+Swiper 라이브러리의 슬라이더 컴포넌트와 CSS를 가져옵니다.
+```
 function Slider(){
 	console.log("component in");
 	let [device, setDevice]=useState("");
+```
+device 상태를 초기값 ""로 설정하여 현재 장치 유형을 저장합니다.
+```
 	useEffect(() => {
 		let Resize=() => {
 			if(window.innerWidth >= 1024) {
@@ -69,8 +75,15 @@ function Slider(){
 		window.addEventListener("resize", Resize);
 		
 	});
-
+```
+컴포넌트에 진입할 때 Resize 함수를 정의하여 화면 크기에 따라 device 상태를 업데이트합니다. <br />
+Resize 함수는 화면 너비가 1024픽셀 이상이면 "desktop", 그렇지 않으면 "mobile"로 설정합니다. <br />
+Resize 함수를 즉시 호출하여 초기 장치 유형을 설정하고, resize 이벤트 리스너를 추가하여 창 크기 변경 시 상태를 업데이트합니다.
+```
 	if(device === ""){ return( <p>Loading...</p>)}
+```
+device가 아직 설정되지 않은 경우 로딩 메시지를 표시합니다.
+```
 	else{
 		return (
 			device === "mobile" ?
@@ -125,5 +138,12 @@ function Slider(){
 
 export default Slider;
 ```
+device가 "mobile"인 경우 Swiper 컴포넌트를 렌더링하고, 슬라이드 수와 간격을 설정합니다. 화면 크기에 따라 슬라이드 수가 조정됩니다. <br />
+"desktop"인 경우 기본적인 div 구조를 사용하여 슬라이드를 렌더링합니다. <br /><br />
+
+이 코드는 화면 크기에 따라 다른 슬라이더를 제공하는 반응형 슬라이더 컴포넌트를 구현합니다. <br />
+Swiper 라이브러리를 사용하여 애니메이션과 페이지네이션 기능을 추가하고, 사용자가 다양한 장치에서 슬라이더를 원활하게 사용할 수 있습니다. <br />
+위 코드의 작동 예시는 아래 이미지 파일과 같습니다.
 
 ### 작동 예시
+<div align="center"><img src="https://github.com/kkii0801/Readme_files/blob/main/Res_JS/responsive_swiperjs.gif?raw=true"></div>
